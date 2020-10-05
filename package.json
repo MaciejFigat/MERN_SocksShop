@@ -1,0 +1,26 @@
+{
+  "name": "shop_mern",
+  "version": "1.0.0",
+  "description": "MERN cart for shopping application",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "react-bootstrap": "^1.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaciejFigat/MERN_SocksShop.git"
+  },
+  "author": "MTF",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MaciejFigat/MERN_SocksShop/issues"
+  },
+  "homepage": "https://github.com/MaciejFigat/MERN_SocksShop#readme"
+}
