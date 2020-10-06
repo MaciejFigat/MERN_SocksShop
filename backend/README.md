@@ -27,3 +27,123 @@ res.json(product)
 })
 //////install AXIOS - http library use to make http request for backend
 npm i axios
+
+## ////////////////// nodemon as dev dependency -D, makes it so I don't have to restart the server every time the data changes on it, nodemon watches the files
+
+npm i -D nodemon concurrently
+
+## // script in backend package.json, nodemon runs server now
+
+"server": "nodemon backend/server",
+
+## // script for client to run frontend from frontend folder package.json
+
+"client": "npm start --prefix frontend",
+
+## //script using concurrently - to run server and client with npm run dev
+
+"dev": "concurrently \"npm run server\" \"npm run client\"",
+
+## // npm i dotenv
+
+brought it into server.js then created .env file for environment variables, used for sensitive information,
+also I need to make sure .env is in gitignore
+
+## // added const PORT = process.env.PORT || 5000 into server.js
+
+app.listen(
+PORT,
+console.log(`Server is running in ${process.env.NODE_ENV} on port ${PORT}`)
+) so 5000 is not hardcoded and is taking the value from PORT from .env file
+
+## Converting backend to ES modules from common JS
+
+"type": "module", in root package.json
+so I can use import/export syntax in both front and backend
+(import products from './data/products.js' - reminder to put .js when i bring in JS file (not bundle like axios) or the module wont be found)
+
+## //
+
+v
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //
+
+## //

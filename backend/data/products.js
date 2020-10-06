@@ -79,5 +79,5 @@ const products = [
   },
 ]
 
-// export default products  - backend not yet set up for es modules, so for now the following will suffice
-module.exports = products
+export default products
+// module.exports = products - when backend not yet set up for es modules, so for now the following will suffice
