@@ -110,9 +110,12 @@ app.use('/api/products', productRoutes)
 Simple middleware for handling exceptions inside of async express routes and passing them to your express error handlers.
 I need it in productRoutes.js
 
-## //
+## //now Postman setup - for testing routes
 
-## //
+## //setting up json object as a response for error in routes, instead of HTML file 
+app.use((err, req, res, next) => {
+  console.log('HEllo')
+})
 
 ## //
 
