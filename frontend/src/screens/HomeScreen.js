@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col } from 'react-bootstrap'
 import Product from '../components/Product'
-import axios from 'axios'
+import { listProducts } from '../actions/productActions'
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([])
-  // useEffect - I can't make is asynchronous so i put the axios request inside another function
-  useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get('/api/products')
+  const dispatch = useDispatch()
 
-      setProducts(data)
-    }
-    fetchProducts()
-  }, [])
+  useEffect(() => {
+    dispatch(listProducts())
+  }, [dispatch])
+
+  const products = []
 
   return (
     <>

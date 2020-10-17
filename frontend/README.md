@@ -21,5 +21,9 @@ in order to use it I need to add it to the store
 I want to fire it off in HomeScreen.js
 I no longer need to link it with axios directly so I can get rid of the 
  const { data } = await axios.get('/api/products') in useEffect
-
+## in useEffect I dispatch listProducts
+ which in our actions fired off PRODUCT_LIST_REQUEST
+## it happened to be successful (PRODUCT_LIST_SUCCESS - it passed the data into payload (payload: data))
+## in reducer that data (that was put into payload) is getting put into products 
+products: action.payload - on a successful response 
 ## /////////////////
