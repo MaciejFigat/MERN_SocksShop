@@ -117,7 +117,7 @@ app.use((err, req, res, next) => {
   console.log('HEllo')
 })
 
-## //
+## //created middleware folder and file for error middleware
 
 ## //
 

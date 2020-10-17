@@ -8,12 +8,18 @@ npm i axios
 added proxy at frontend package.json
 "proxy": "http://127.0.0.1:5000",
 
-## /////////////////
+## REDUX setup (in frontend)
+npm i redux react-redux redux-thunk
+thunk is middleware to make asynchronous requests
+## in index.js - import { Provider } from 'react-redux' wrapping everything with <Provider>
+creating store.js
 
-## /////////////////
+## creating reducers ie. productReducer
+in order to use it I need to add it to the store
 
-## /////////////////
-
-## /////////////////
+## after setting listProducts action in productActions.js
+I want to fire it off in HomeScreen.js
+I no longer need to link it with axios directly so I can get rid of the 
+ const { data } = await axios.get('/api/products') in useEffect
 
 ## /////////////////
