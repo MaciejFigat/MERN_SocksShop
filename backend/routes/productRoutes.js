@@ -11,7 +11,9 @@ router.get(
   '/',
   asyncHandler(async (req, res) => {
     const products = await Product.find({})
+    // throw new Error('something went wrong')
     // find method when passed {} - empty object -> gives everything
+
     res.json(products)
   })
 )
