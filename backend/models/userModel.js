@@ -30,6 +30,16 @@ const userSchema = mongoose.Schema(
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password)
 }
+//before we save I want to encrypt the password
+userSchema.pre('save', async function (next) {
+  // if password is not modified we go next - so we dont rehash the password when user changes email etc.
+  if (!this.isModified('password')) {
+    next()
+  }
+  // if it has been modyfied then those will run and password will be hashed
+  const salt = await bcrypt.genSalt(10)
+  this.password = await bcrypt.hash(this.password, salt)
+})
 
 const User = mongoose.model('User', userSchema)
 
