@@ -119,7 +119,8 @@ app.use((err, req, res, next) => {
 
 ## //created middleware folder and file for error middleware
 
-## //
+## // npm install jsonwebtoken
+middleware for protecting routes
 
 ## //
 
