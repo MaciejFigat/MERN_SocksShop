@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 // useDispatch when I want to call and action and useSelector when I want to bring in something from state
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container, NavDropdown } from 'react-bootstrap'
+import { logout } from '../actions/userActions'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -11,7 +12,7 @@ const Header = () => {
   const { userInfo } = userLogin
 
   const logoutHandler = () => {
-    console.log('logout')
+    dispatch(logout())
   }
 
   return (
