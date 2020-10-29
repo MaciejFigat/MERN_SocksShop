@@ -1,7 +1,13 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+// useDispatch when I want to call and action and useSelector when I want to bring in something from state
 import { LinkContainer } from 'react-router-bootstrap'
 import { Navbar, Nav, Container } from 'react-bootstrap'
+
 const Header = () => {
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   return (
     <header>
       <Navbar bg='dark' variant='dark' expand='lg' collapseOnSelect>
@@ -22,6 +28,7 @@ const Header = () => {
                 <i className='fas fa-heart'></i> Lista życzeń
               </Nav.Link>
             </LinkContainer>
+            {userInfo}
             <LinkContainer to='/login'>
               <Nav.Link>
                 <i className='fas fa-user-tie'></i> Zaloguj się
