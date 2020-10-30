@@ -33,12 +33,17 @@ const RegisterScreen = ({ location, history }) => {
 
   const submitHandler = (e) => {
     e.preventDefault()
-    //dispatch register for later
+    if (password !== confirmPassword) {
+      setMessage('Hasło niepoprawne')
+    } else {
+      dispatch(register(name, email, password))
+    }
   }
 
   return (
     <FormContainer>
       <h1>Zarejestruj się</h1>
+      {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
