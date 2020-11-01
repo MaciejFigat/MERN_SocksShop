@@ -88,7 +88,7 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Zarejstruj się
+          Zarejestruj się
         </Button>
       </Form>
       <Row className='py-3'>
