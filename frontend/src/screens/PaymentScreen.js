@@ -30,18 +30,27 @@ const PaymentScreen = ({ history }) => {
       <Form onSubmit={submitHandler}>
         <Form.Group>
           <Form.Label as='legend'>Wybierz metodę</Form.Label>
-        </Form.Group>
-        <Col>
-          <Form.Check
+
+          <Col>
+            <Form.Check
+              type='radio'
+              label='PayPal or Credit Card'
+              id='PayPal'
+              name='paymentMethod'
+              value='PayPal'
+              checked
+              onChange={(e) => setPaymentMethod(e.target.value)}
+            ></Form.Check>
+            {/* <Form.Check
             type='radio'
-            label='PayPal or Credit Card'
-            id='PayPal'
+            label='Stripe'
+            id='Stripe'
             name='paymentMethod'
-            value='PayPal'
-            checked
+            value='Stripe'
             onChange={(e) => setPaymentMethod(e.target.value)}
-          ></Form.Check>
-        </Col>
+           ></Form.Check>*/}
+          </Col>
+        </Form.Group>
         <Button type='submit' variant='primary'>
           Kontynuuj
         </Button>
@@ -51,13 +60,3 @@ const PaymentScreen = ({ history }) => {
 }
 
 export default PaymentScreen
-
-// to add another payment method
-// <Form.Check
-//             type='radio'
-//             label='Stripe'
-//             id='Stripe'
-//             name='paymentMethod'
-//             value='Stripe'
-//             onChange={(e) => setPaymentMethod(e.target.value)}
-//           ></Form.Check>
