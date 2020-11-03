@@ -31,6 +31,12 @@ const PlaceOrderScreen = () => {
   // here tax with rate of 23% and up to 2 decimal points accuracy
   cart.taxPrice = addDecimals(Number((0.23 * cart.itemsPrice).toFixed(2)))
 
+  cart.totalPrice = (
+    Number(cart.itemsPrice) +
+    Number(cart.shippingPrice) +
+    Number(cart.taxPrice)
+  ).toFixed(2)
+
   const placeOrderHandler = () => {
     console.log('place order')
   }
