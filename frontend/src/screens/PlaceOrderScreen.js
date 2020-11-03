@@ -17,7 +17,23 @@ const PlaceOrderScreen = () => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
+  // here a function to add a decimal point when the value of taxPrice is not showing decimal points because it's a number without decimal points i.e. 13 or 13.5, I want to show 13.00 and 13.50
+  const addDecimals = (num) => {
+    return (Math.round(num * 100) / 100).toFixed(2)
+  }
+  // Prices calculation
+  cart.itemsPrice = addDecimals(
+    cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+  )
+  // Here I determine whether the shippingPrice would be tied and to which value of total itemsPrice, so If total will be > 150 price of shipping = 0, if not then 20
+  cart.shippingPrice = addDecimals(cart.itemsPrice > 150 ? 0 : 20)
 
+  // here tax with rate of 23% and up to 2 decimal points accuracy
+  cart.taxPrice = addDecimals(Number((0.23 * cart.itemsPrice).toFixed(2)))
+
+  const placeOrderHandler = () => {
+    console.log('place order')
+  }
   return (
     <>
       <CheckoutSteps step1 step2 step3 step4 />
@@ -84,6 +100,34 @@ const PlaceOrderScreen = () => {
                   <Col>Przedmioty</Col>
                   <Col>Cena {cart.itemsPrice}</Col>
                 </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Koszt wysyłki</Col>
+                  <Col>{cart.shippingPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Podatek</Col>
+                  <Col>{cart.taxPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Row>
+                  <Col>Należność ogółem</Col>
+                  <Col>{cart.totalPrice}</Col>
+                </Row>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                <Button
+                  type='button'
+                  className='btn-block'
+                  disabled={cart.cartItems === 0}
+                  onClick={placeOrderHandler}
+                >
+                  Złóż zamówienie
+                </Button>
               </ListGroup.Item>
             </ListGroup>
           </Card>
