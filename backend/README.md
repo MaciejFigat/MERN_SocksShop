@@ -123,14 +123,17 @@ app.use((err, req, res, next) => {
 middleware for protecting routes
 
 ## //Example workflow with adding order
+
 backend:
 controllers/orderController.js
 routes/orderRoutes.js
 adding new route to server.js
 then in frontend:
 new constant
+new reducer (orderReducer)
+bring the reducer to the store.js
 create action
-new
+
 
 ## //
 
