@@ -122,7 +122,15 @@ app.use((err, req, res, next) => {
 ## // npm install jsonwebtoken
 middleware for protecting routes
 
-## //
+## //Example workflow with adding order
+backend:
+controllers/orderController.js
+routes/orderRoutes.js
+adding new route to server.js
+then in frontend:
+new constant
+create action
+new
 
 ## //
 
