@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import { Link } from 'react-router-dom'
 import CheckoutSteps from '../components/CheckoutSteps'
+import { createOrder } from '../actions/orderActions'
 
 const PlaceOrderScreen = () => {
   const dispatch = useDispatch()
@@ -38,7 +39,17 @@ const PlaceOrderScreen = () => {
   ).toFixed(2)
 
   const placeOrderHandler = () => {
-    console.log('place order')
+    dispatch(
+      createOrder({
+        orderItems: cart.cartItems,
+        shippingAddress: cart.shippingAddress,
+        paymentMethod: cart.paymentMethod,
+        itemsPrice: cart.itemsPrice,
+        shippingPrice: cart.shippingPrice,
+        taxPrice: cart.taxPrice,
+        totalPrice: cart.totalPrice,
+      })
+    )
   }
   return (
     <>

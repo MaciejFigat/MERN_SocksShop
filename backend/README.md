@@ -133,6 +133,7 @@ new constant
 new reducer (orderReducer)
 bring the reducer to the store.js
 create action orderActions.js
+we bring createOrder action into PlaceOrderScreen (into PlaceOrderHandler - using dispatch)
 
 
 ## //
