@@ -132,7 +132,7 @@ then in frontend:
 new constant
 new reducer (orderReducer)
 bring the reducer to the store.js
-create action
+create action orderActions.js
 
 
 ## //
