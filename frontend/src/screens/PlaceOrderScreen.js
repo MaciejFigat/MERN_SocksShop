@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { createOrder } from '../actions/orderActions'
 
-const PlaceOrderScreen = (history) => {
+const PlaceOrderScreen = ({ history }) => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
@@ -43,9 +43,9 @@ const PlaceOrderScreen = (history) => {
 
   useEffect(() => {
     if (success) {
-      history.pushState(`/order/${order._id}`)
-      // eslint-disable-next-line
+      history.push(`/order/${order._id}`)
     }
+    // eslint-disable-next-line
   }, [history, success])
 
   const placeOrderHandler = () => {
