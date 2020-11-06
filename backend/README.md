@@ -136,7 +136,12 @@ create action orderActions.js
 we bring createOrder action into PlaceOrderScreen (into PlaceOrderHandler - using dispatch)
 
 
-## //
+## //Example workflow with adding new orderController 
+backend: 
+creating new controller: getOrderById
+creating new route: @route GET /api/orders/:id in orderRoutes.js - 
+router.route('/:id').get(protect, getOrderById)
+
 
 ## //
 
