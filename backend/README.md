@@ -141,6 +141,13 @@ backend:
 creating new controller: getOrderById
 creating new route: @route GET /api/orders/:id in orderRoutes.js - 
 router.route('/:id').get(protect, getOrderById)
+frontend:
+we bring the orderDetails from the route we just created into OrderScreen.js
+1. new constants in order constants ORDER_DETAILS_REQUEST etc.
+2. new reducer in orderReducers.js
+3. add reducer orderDetailsReducer to store.js
+4. new action in orderActions.js getOrderDetails
+
 
 
 ## //
