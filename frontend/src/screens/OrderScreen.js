@@ -14,6 +14,16 @@ const OrderScreen = ({ match }) => {
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
 
+  if (!loading) {
+    const addDecimals = (num) => {
+      return (Math.round(num * 100) / 100).toFixed(2)
+    }
+    // Prices calculation
+    order.itemsPrice = addDecimals(
+      order.orderItems.reduce((acc, item) => acc + item.price * item.qty, 0)
+    )
+  }
+
   // here I dispatch the action
   useEffect(() => {
     dispatch(getOrderDetails(orderId))
@@ -31,6 +41,8 @@ const OrderScreen = ({ match }) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2> Shipping</h2>
+              <strong>Imię zamawiającego: </strong> {order.user.name}
+              <a href={`mailto:${order.user.email}`}> {order.user.email}</a>
               <p>
                 <strong> Adres: </strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city},{' '}

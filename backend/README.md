@@ -147,7 +147,8 @@ we bring the orderDetails from the route we just created into OrderScreen.js
 2. new reducer in orderReducers.js
 3. add reducer orderDetailsReducer to store.js
 4. new action in orderActions.js getOrderDetails
-
+5. create OrderScreen.js
+6. add it into App.js
 
 
 ## //
