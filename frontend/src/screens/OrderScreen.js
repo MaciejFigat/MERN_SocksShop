@@ -24,10 +24,13 @@ const OrderScreen = ({ match }) => {
     )
   }
 
-  // here I dispatch the action
+  // here I dispatch the action, also I check for the order and ensure that orderID  is the same as the ID in the URL, if it's not matched then I dispatch getOrderDetails to get newest order
+
   useEffect(() => {
-    dispatch(getOrderDetails(orderId))
-  }, [])
+    if (!order || order._id !== orderId) {
+      dispatch(getOrderDetails(orderId))
+    }
+  }, [dispatch, order, orderId])
 
   return loading ? (
     <Loader />
@@ -40,20 +43,44 @@ const OrderScreen = ({ match }) => {
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2> Shipping</h2>
-              <strong>Imię zamawiającego: </strong> {order.user.name}
-              <a href={`mailto:${order.user.email}`}> {order.user.email}</a>
+              <h2>Złożone zamówienie</h2>
+              <p>
+                <strong>Imię zamawiającego: </strong> {order.user.name}
+              </p>
+              <p>
+                <strong>Email zamawiającego: </strong>
+                <a href={`mailto:${order.user.email}`}> {order.user.email}</a>
+              </p>
               <p>
                 <strong> Adres: </strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city},{' '}
                 {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}{' '}
               </p>
+              {order.isDelivered ? (
+                <Message variant='success'>
+                  Zamówienie dostarczone {order.deliveredAt}
+                </Message>
+              ) : (
+                <Message variant='danger'>
+                  Zamówienie jeszcze nie dostarczone
+                </Message>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>
               <h2>Metoda płatności:</h2>
-              <strong>{order.paymentMethod}</strong>
+              <p>
+                <strong>{order.paymentMethod}</strong>
+              </p>
+
+              {order.isPaid ? (
+                <Message variant='success'>
+                  Należność uiszczona {order.paidAt}
+                </Message>
+              ) : (
+                <Message variant='danger'>Należność nie uiszczona</Message>
+              )}
             </ListGroup.Item>
 
             <ListGroup.Item>
@@ -98,8 +125,8 @@ const OrderScreen = ({ match }) => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Przedmioty</Col>
-                  <Col>Cena {order.itemsPrice}</Col>
+                  <Col>Przedmioty zamówienia</Col>
+                  <Col>{order.itemsPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

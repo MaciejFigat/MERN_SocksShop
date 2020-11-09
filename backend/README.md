@@ -151,7 +151,28 @@ we bring the orderDetails from the route we just created into OrderScreen.js
 6. add it into App.js
 
 
+## //Workflow with setting up payment with PayPal
+in order to receive data from paypal when user pays for the order
+backend:
+1. orderController -> updateOrderToPaid
+2. controller into orderRoutes
+frontend:
+1. constants 
+2. orderReducers - new reducer- orderPayReducer 
+3. adding it to the store
+4. order action
 ## //
+## //
+## //
+## //
+
+## shortcuts for VSC
+duplicate line 
+Shift + Alt + Up/Down
+
+same words as the one highlighted
+Ctrl+D
+
 
 ## //
 
@@ -183,28 +204,3 @@ we bring the orderDetails from the route we just created into OrderScreen.js
 
 ## //
 
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
-
-## //
