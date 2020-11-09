@@ -160,7 +160,11 @@ frontend:
 1. constants 
 2. orderReducers - new reducer- orderPayReducer 
 3. adding it to the store
-4. order action
+4. order action - payOrder 
+backend: 
+1. go to https://developer.paypal.com/ - add new application, create sandbox accounts (1 business one personal ) copy clientID from payPal application then put it into .env as a variable
+2. set up new route in server.js 
+3. implementing paypal sdk script
 ## //
 ## //
 ## //

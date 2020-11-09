@@ -25,6 +25,11 @@ app.use('/api/users', userRoutes)
 
 app.use('/api/orders', orderRoutes)
 
+// route for paypal, so when we are ready to make the payment we will hit this route and fetch this client_id
+app.get('/api/config/paypal', (req, res) =>
+  res.send(process.env.PAYPAL_CLIENT_ID)
+)
+
 // this is for bad route - 404 error
 app.use(notFound)
 
