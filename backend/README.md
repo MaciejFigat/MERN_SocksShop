@@ -173,7 +173,11 @@ frontend:
 _backend:_
 1. new controller - getMyOrders
 2. new route - in orderRoutes - to /myorders
-3. 
+frontend:
+1. new order constants
+2. new reducer
+3. bring it into store.js
+4. action in orderActions
 ## //
 ## //
 ## //
