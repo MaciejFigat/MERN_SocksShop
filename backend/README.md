@@ -179,7 +179,13 @@ frontend:
 3. bring it into store.js
 4. action in orderActions
 5. in ProfileScreen: adding the action
-## //
+
+## adding Admin functionality - workflow
+_backend:_
+1.  new userController - getUsers
+2. in userRoutes we bring in the getUser controller
+3. authentication for admin in authMiddleware
+
 ## //
 ## //
 
