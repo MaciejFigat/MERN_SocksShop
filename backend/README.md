@@ -185,6 +185,13 @@ _backend:_
 1.  new userController - getUsers
 2. in userRoutes we bring in the getUser controller
 3. authentication for admin in authMiddleware
+_frontend:_
+1. constants 
+2. new user reducer -userListReducer
+2.1. add it to store
+3. new user action - listUsers 
+_backend:_
+1. new screen UserListScreen.js
 
 ## //
 ## //
