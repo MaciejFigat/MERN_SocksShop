@@ -178,6 +178,7 @@ frontend:
 2. new reducer
 3. bring it into store.js
 4. action in orderActions
+5. in ProfileScreen: adding the action
 ## //
 ## //
 ## //
