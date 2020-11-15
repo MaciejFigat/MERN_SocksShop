@@ -169,7 +169,11 @@ frontend:
 1. OrderScreen - request to the route and sdk script in useEffect
 2. installing react-paypal-button-v2
 
-## //
+## workflow to display user orders
+_backend:_
+1. new controller - getMyOrders
+2. new route - in orderRoutes - to /myorders
+3. 
 ## //
 ## //
 ## //
