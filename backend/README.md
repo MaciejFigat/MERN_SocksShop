@@ -192,6 +192,8 @@ _frontend:_
 3. new user action - listUsers 
 _backend:_
 1. new screen UserListScreen.js
+2. path in app.js
+3. creating adming dropdown in the header
 
 ## //
 ## //
