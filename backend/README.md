@@ -195,7 +195,15 @@ _backend:_
 2. path in app.js
 3. creating adming dropdown in the header
 
-## //
+## Admin functionality for deleting users 
+_backend:_
+1. userController new one - deleteUser
+2. bringing it into userRoutes 
+_frontend:_
+1. user constants
+2. user reducer userDeleteReducer -> adding it to the store.js
+3. new action - in userActions 
+4. back into UserListScreen
 ## //
 
 ## shortcuts for VSC
