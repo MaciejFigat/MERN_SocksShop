@@ -203,8 +203,12 @@ _frontend:_
 1. user constants
 2. user reducer userDeleteReducer -> adding it to the store.js
 3. new action - in userActions 
-4. back into UserListScreen
-## //
+4. back into UserListScreen 
+## ## Admin functionality for updating user data
+_backend:_
+1. user controller getUserById and updateUser
+2. user routes bring those 2 in
+##
 
 ## shortcuts for VSC
 duplicate line 
