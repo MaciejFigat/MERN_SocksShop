@@ -62,7 +62,7 @@ const UserEditScreen = ({ match, history }) => {
             <Form.Group controlId='isadmin'>
               <Form.Check
                 type='checkbox'
-                label='Is Admin'
+                label='Jest administratorem?'
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
@@ -73,9 +73,6 @@ const UserEditScreen = ({ match, history }) => {
             </Button>
           </Form>
         )}
-        {message && <Message variant='danger'>{message}</Message>}
-        {error && <Message variant='danger'>{error}</Message>}
-        {loading && <Loader />}
       </FormContainer>
     </>
   )

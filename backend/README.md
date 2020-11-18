@@ -208,6 +208,10 @@ _frontend:_
 _backend:_
 1. user controller getUserById and updateUser
 2. user routes bring those 2 in
+_frontend:_
+1. UserEditScreen 
+2. bring it into App.js 
+
 ##
 
 ## shortcuts for VSC
