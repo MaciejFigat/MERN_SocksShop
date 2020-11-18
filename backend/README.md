@@ -212,7 +212,9 @@ _frontend:_
 1. UserEditScreen 
 2. bring it into App.js 
 3. fire off the getUserDetails action in UserEditScreen to fill the data in the editing form
-
+4. Update data functionality:
+constants, reducer - userUpdateReducer, adding reducer to store.js, in userActions
+ 
 ##
 
 ## shortcuts for VSC

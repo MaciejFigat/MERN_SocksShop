@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import Message from '../components/Message'
 import Loader from '../components/Loader'
 import FormContainer from '../components/FormContainer'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import { USER_UPDATE_RESET } from '../actions/userActions'
 
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
@@ -16,8 +17,14 @@ const UserEditScreen = ({ match, history }) => {
   const dispatch = useDispatch()
 
   const userDetails = useSelector((state) => state.userDetails)
-
   const { loading, error, user } = userDetails
+
+  const userUpdate = useSelector((state) => state.userUpdate)
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate
 
   useEffect(() => {
     // userId is coming from the URL ( const userId = match.params.id) if it doesn't match user._id then I want to fetch the user, same if it doesn't exist
@@ -28,7 +35,7 @@ const UserEditScreen = ({ match, history }) => {
       setEmail(user.email)
       setIsAdmin(user.isAdmin)
     }
-  }, [user])
+  }, [user, dispatch, userId])
 
   const submitHandler = (e) => {
     e.preventDefault()
