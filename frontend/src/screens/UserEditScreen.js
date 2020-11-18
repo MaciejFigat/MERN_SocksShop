@@ -19,7 +19,16 @@ const UserEditScreen = ({ match, history }) => {
 
   const { loading, error, user } = userDetails
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    // userId is coming from the URL ( const userId = match.params.id) if it doesn't match user._id then I want to fetch the user, same if it doesn't exist
+    if (!user.name || user._id !== userId) {
+      dispatch(getUserDetails(userId))
+    } else {
+      setName(user.name)
+      setEmail(user.email)
+      setIsAdmin(user.isAdmin)
+    }
+  }, [])
 
   const submitHandler = (e) => {
     e.preventDefault()
