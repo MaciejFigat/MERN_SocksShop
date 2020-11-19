@@ -204,7 +204,7 @@ _frontend:_
 2. user reducer userDeleteReducer -> adding it to the store.js
 3. new action - in userActions 
 4. back into UserListScreen 
-## ## Admin functionality for updating user data
+##  Admin functionality for updating user data
 _backend:_
 1. user controller getUserById and updateUser
 2. user routes bring those 2 in
@@ -214,7 +214,11 @@ _frontend:_
 3. fire off the getUserDetails action in UserEditScreen to fill the data in the editing form
 4. Update data functionality:
 constants, reducer - userUpdateReducer, adding reducer to store.js, in userActions
- 
+## Functionality for product delete  
+_backend:_
+1. controller for deleteProduct
+2. adding it to productRoutes
+
 ##
 
 ## shortcuts for VSC
