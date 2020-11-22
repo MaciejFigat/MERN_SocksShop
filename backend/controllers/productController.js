@@ -46,4 +46,62 @@ const deleteProduct = asyncHandler(async (req, res) => {
   }
 })
 
-export { getProductById, getProducts, deleteProduct }
+// @description create a product
+// @route POST /api/products/
+// @access private/admin
+
+const createProduct = asyncHandler(async (req, res) => {
+  const product = new Product({
+    name: 'Przykładowy produkt',
+    price: 0,
+    user: req.user._id,
+    image: '/images/sample.jpg',
+    brand: 'marka przykładowa',
+    category: 'kategoria nijaka',
+    countInStock: 0,
+    numReviews: 0,
+    description: 'opis przykładowy',
+  })
+  const createdProduct = await product.save()
+  res.status(201).json(createdProduct)
+})
+
+// @description update a product
+// @route PUT /api/products/:id
+// @access private/admin
+
+const updateProduct = asyncHandler(async (req, res) => {
+  const {
+    name,
+    price,
+    description,
+    image,
+    brand,
+    category,
+    countInStock,
+  } = req.body
+  const product = await Product.findById(req.params.id)
+
+  if (product) {
+    product.name = name
+    product.price = price
+    product.description = description
+    product.image = image
+    product.brand = brand
+    product.category = category
+    product.countInStock = countInStock
+
+    const updatedProduct = await product.save()
+    res.json(updatedProduct)
+  } else {
+    res.status(404)
+    throw new Error('Product not found')
+  }
+})
+export {
+  getProductById,
+  getProducts,
+  deleteProduct,
+  createProduct,
+  updateProduct,
+}

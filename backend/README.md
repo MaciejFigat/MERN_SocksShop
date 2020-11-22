@@ -221,6 +221,9 @@ _backend:_
 _frontend:_
 1. constants reducer(productDeleteReducer) adding it to the store, action (deleteProduct)
 2. bring in the deleteProduct action into productListScreen
+## Functionality for creating a new product or editing an existing one
+1. controllers - createProduct and updateProduct 
+2. add those into productRoutes
 ##
 
 ## shortcuts for VSC
