@@ -218,7 +218,9 @@ constants, reducer - userUpdateReducer, adding reducer to store.js, in userActio
 _backend:_
 1. controller for deleteProduct
 2. adding it to productRoutes
-
+_frontend:_
+1. constants reducer(productDeleteReducer) adding it to the store, action (deleteProduct)
+2. bring in the deleteProduct action into productListScreen
 ##
 
 ## shortcuts for VSC
