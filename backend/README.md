@@ -238,6 +238,14 @@ _backend:_
 2. in server.js - we bring in the uploadRoutes.js and make the /uploads static in express
 _frontend:_
 1. in ProductEditScreen implementation
+
+## Admin order list 
+_backend:_
+1. orderController ->getOrders
+2. routes in orderRoutes
+_frontend:_
+1. ORDER_LIST_ constants, reducer orderListReducer, bring it into store.js
+2. action
 ## shortcuts for VSC
 duplicate line 
 Shift + Alt + Up/Down
