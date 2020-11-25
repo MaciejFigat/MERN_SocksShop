@@ -229,7 +229,13 @@ _frontend:_
 1. constants, reducers in productReducers - adding into the store, 
 2. in product actions new action for creating and editing a product
 3. bring in the action of createProduct into ProductListScreen
-##
+
+## Uploading pictures - Multer (npm i multer) as middleware for uploading files
+_in the root dir:_ 
+new catalog: uploads -> file.txt
+_backend:_ 
+1.  in routes new file - uploadRoutes.js
+2. in server.js - we bring in the uploadRoutes.js and make the /uploads static in express
 
 ## shortcuts for VSC
 duplicate line 
