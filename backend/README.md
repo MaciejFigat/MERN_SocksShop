@@ -236,7 +236,8 @@ new catalog: uploads -> file.txt
 _backend:_ 
 1.  in routes new file - uploadRoutes.js
 2. in server.js - we bring in the uploadRoutes.js and make the /uploads static in express
-
+_frontend:_
+1. in ProductEditScreen implementation
 ## shortcuts for VSC
 duplicate line 
 Shift + Alt + Up/Down
