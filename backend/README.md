@@ -255,6 +255,18 @@ _frontend:_
 1. constants, reducer - orderDeliverReducer, add to store.js
 2. action - deliverOrder, add it to OrderScreen
 
+## adding and config of morgan (npm i morgan) 
+_backend:_ 
+1.  in server.js - middleware for morgan - it shows me GET PUT POST DELETE calls I make to my API
+
+## review functionality 
+_backend:_
+1. controller - createProductReview - add in the routes
+_frontend:_
+1. constants, 
+2. reducer in productReducers - productReviewCreateReducer -add to store.js
+3. in productActions - createProductReview
+4. implementing the above mentioned into ProductScreen
 ##
 ## shortcuts for VSC
 duplicate line 
