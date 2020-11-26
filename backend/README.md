@@ -246,6 +246,16 @@ _backend:_
 _frontend:_
 1. ORDER_LIST_ constants, reducer orderListReducer, bring it into store.js
 2. action
+
+## Admin - order delivered button 
+_backend:_
+1. controller - updateOrderToDelivered 
+2. orderRoutes 
+_frontend:_
+1. constants, reducer - orderDeliverReducer, add to store.js
+2. action - deliverOrder, add it to OrderScreen
+
+##
 ## shortcuts for VSC
 duplicate line 
 Shift + Alt + Up/Down
