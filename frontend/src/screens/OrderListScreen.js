@@ -35,13 +35,41 @@ const OrderListScreen = ({ history }) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>Data </th>
+              <th>Użytkownik </th>
+              <th>Data zamówienia</th>
+              <th>Cena - całość</th>
+              <th>Należność uiszczona</th>
+              <th>Zamówienie dostarczone</th>
             </tr>
           </thead>
           <tbody>
             {orders.map((order) => (
-              <tr key={order.id}>
-                <td>{order.id}</td>
+              <tr key={order._id}>
+                <td>{order._id}</td>
+                <td>{order.user && order.user.name}</td>
+                <td>{order.createdAt.substring(0, 10)}</td>
+                <td>{order.totalPrice}</td>
+                <td>
+                  {order.isPaid ? (
+                    order.paidAt.substring(0, 10)
+                  ) : (
+                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                  )}
+                </td>
+                <td>
+                  {order.isDelivered ? (
+                    order.deliveredAt.substring(0, 10)
+                  ) : (
+                    <i className='fas fa-times' style={{ color: 'red' }}></i>
+                  )}
+                </td>
+                <td>
+                  <LinkContainer to={`/order/${order._id}/edit`}>
+                    <Button variant='dark' className='btn-small'>
+                      Szczegóły transakcji
+                    </Button>
+                  </LinkContainer>
+                </td>
               </tr>
             ))}
           </tbody>
