@@ -145,6 +145,18 @@ const ProductScreen = ({ history, match }) => {
               {product.reviews.length === 0 && (
                 <Message>Brak recenzji produktu</Message>
               )}
+              <ListGroup variant='flush'>
+                {product.reviews.map((review) => (
+                  <ListGroup.Item key={review._id}>
+                    <strong>
+                      {review.name}
+                      <Rating value={review.rating} />
+                      <p>{review.createdAt.substring(0, 10)}</p>
+                      <p>{review.comment}</p>
+                    </strong>
+                  </ListGroup.Item>
+                ))}
+              </ListGroup>
             </Col>
           </Row>
         </>
