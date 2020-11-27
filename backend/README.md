@@ -267,11 +267,19 @@ _frontend:_
 2. reducer in productReducers - productReviewCreateReducer -add to store.js
 3. in productActions - createProductReview
 4. implementing the above mentioned into ProductScreen
-##
+
+## implementing SearchBox in the Header 
+1. passing (history) props in the Header when I render <SearchBox/> there, is impossible 
+2. I pass it in Route and then it will have access to props 
+``<Route render={({ history }) => <SearchBox history={history} />} />``
+
+
+
+
 ## shortcuts for VSC
 duplicate line 
 Shift + Alt + Up/Down
-
+## 
 same words as the one highlighted
 Ctrl+D
 
