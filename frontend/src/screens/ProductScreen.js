@@ -18,6 +18,7 @@ import Message from '../components/Message'
 import {
   listProductDetails,
   createProductReview,
+  createProduct,
 } from '../actions/productActions'
 import { PRODUCT_CREATE_REVIEW_RESET } from '../constants/productConstants'
 
@@ -42,11 +43,27 @@ const ProductScreen = ({ history, match }) => {
   const { userInfo } = userLogin
 
   useEffect(() => {
+    if (successProductReview) {
+      alert('Opinia dodana!')
+      setRating(0)
+      setComment('')
+      dispatch({ type: PRODUCT_CREATE_REVIEW_RESET })
+    }
     dispatch(listProductDetails(match.params.id))
-  }, [dispatch, match])
+  }, [dispatch, match, successProductReview])
 
   const addToCartHandler = () => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault()
+    dispatch(
+      createProductReview(match.params.id, {
+        rating,
+        comment,
+      })
+    )
   }
 
   return (
@@ -156,6 +173,50 @@ const ProductScreen = ({ history, match }) => {
                     </strong>
                   </ListGroup.Item>
                 ))}
+                <ListGroup.Item>
+                  <h2>Napisz swoję opinię</h2>
+                  {errorProductReview && (
+                    <Message variant='danger'>{errorProductReview}</Message>
+                  )}
+                  {userInfo ? (
+                    <Form onSubmit={submitHandler}>
+                      <Form.Group controlId='rating'>
+                        <Form.Label>Ocena produktu</Form.Label>
+                        <Form.Control
+                          as='select'
+                          value={rating}
+                          onChange={(e) => {
+                            setRating(e.target.value)
+                          }}
+                        >
+                          <option value=''>Wybierz ocenę produktu</option>
+                          <option value='1'>1 </option>
+                          <option value='2'>2 </option>
+                          <option value='3'>3 </option>
+                          <option value='4'>4 </option>
+                          <option value='5'>5 </option>
+                        </Form.Control>
+                      </Form.Group>
+                      <Form.Group controlId='comment'>
+                        <Form.Label>Komentarz</Form.Label>
+                        <Form.Control
+                          as='textarea'
+                          row='3'
+                          value={comment}
+                          onChange={(e) => setComment(e.target.value)}
+                        ></Form.Control>
+                        <Button type='submit' variant='primary'>
+                          Dodaj recenzję
+                        </Button>
+                      </Form.Group>
+                    </Form>
+                  ) : (
+                    <Message>
+                      <Link to='/login'>Zaloguj się</Link> by zrecenzować
+                      produkt
+                    </Message>
+                  )}
+                </ListGroup.Item>
               </ListGroup>
             </Col>
           </Row>
