@@ -6,6 +6,10 @@ import Product from '../models/productModel.js'
 // @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
+
+  const pageSize = 2
+  const page = Number(req.query.pageNumber) || 1
+
   // req.query is how I get query strings
   const keyword = req.query.keyword
     ? {
@@ -18,10 +22,13 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {}
 
-  const products = await Product.find({ ...keyword })
+// part of pagination 
+const count = await Product.countDocuments({...keyword})
+
+  const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1) )
   // find method when passed {} - empty object -> gives everything
 
-  res.json(products)
+  res.json({products, page, pages: Math.ceil(count /pageSize)})
 })
 
 // @description Fetch single product

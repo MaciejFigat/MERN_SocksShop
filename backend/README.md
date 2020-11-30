@@ -273,6 +273,22 @@ _frontend:_
 2. I pass it in Route and then it will have access to props 
 ``<Route render={({ history }) => <SearchBox history={history} />} />``
 
+## Pagination
+_backend:_
+1. productController -> in getProducts: 
+
+const pageSize = 2
+const page = Number(req.query.pageNumber) || 1
+
+const count = await Product.count({...keyword})
+
+const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1) )
+it will give me correct amount of products and correct place for them 
+
+_frontend:_
+1. product actions - listProducts updated ( to include pageNumber = '' and &pageNumber=${pageNumber} - in axios call)
+2. reducer update - productListReducer - products: action.payload in case PRODUCT_LIST_SUCCESS to
+      return { loading: false, products: action.payload.products pages: action.payload.pages, page: action.payload.page } } - because in controller it's  res.json({products, page, pages: Math.ceil(count /pageSize)}) instead of res.json(products)
 
 
 
