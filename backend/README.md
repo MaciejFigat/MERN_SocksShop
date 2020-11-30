@@ -289,7 +289,9 @@ _frontend:_
 1. product actions - listProducts updated ( to include pageNumber = '' and &pageNumber=${pageNumber} - in axios call)
 2. reducer update - productListReducer - products: action.payload in case PRODUCT_LIST_SUCCESS to
       return { loading: false, products: action.payload.products pages: action.payload.pages, page: action.payload.page } } - because in controller it's  res.json({products, page, pages: Math.ceil(count /pageSize)}) instead of res.json(products)
-
+3. paths in app.js
+4. in HomeScreen.js - const pageNumber = match.params.pageNumber || 1, also in useEffect - dispatch
+5. Create Paginate.js - component that uses React-bootstrap component Pagination
 
 
 ## shortcuts for VSC
