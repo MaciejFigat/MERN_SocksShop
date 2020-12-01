@@ -273,9 +273,9 @@ _frontend:_
 2. I pass it in Route and then it will have access to props 
 ``<Route render={({ history }) => <SearchBox history={history} />} />``
 
-## Pagination
+## Pagination 
 _backend:_
-1. productController -> in getProducts: 
+1. productController -> in getProducts: const pageSize = 10 - amount of products on a page
 
 const pageSize = 2
 const page = Number(req.query.pageNumber) || 1
@@ -292,8 +292,21 @@ _frontend:_
 3. paths in app.js
 4. in HomeScreen.js - const pageNumber = match.params.pageNumber || 1, also in useEffect - dispatch
 5. Create Paginate.js - component that uses React-bootstrap component Pagination
+6. in HomeScreen - render the Paginate component, 
+keyword={keyword && keyword} - this means if keyword exist then use keyword
+keyword={keyword ? keyword : ''} - ternary operator - if it exists then use keyword if not just an empty string ('')
 
+## adding Paginate.js into admin ProductListScreen
 
+## carousel with highest rated products
+_backend:_
+1. new productController - getTopProducts 
+await Product.find({}).sort({ rating: -1 }).limit(3) - (sort rating -1) means ascending order, limit to 3 products
+2. into productRoutes 
+_frontend:_
+1. constants + reducer + add to store
+2. now I need to call the action to fetch those products: productActions- _listTopProducts_
+3. creating new component ProductCarousel.js
 ## shortcuts for VSC
 duplicate line 
 Shift + Alt + Up/Down

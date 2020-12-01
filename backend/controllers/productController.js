@@ -6,8 +6,7 @@ import Product from '../models/productModel.js'
 // @access Public
 
 const getProducts = asyncHandler(async (req, res) => {
-
-  const pageSize = 2
+  const pageSize = 10
   const page = Number(req.query.pageNumber) || 1
 
   // req.query is how I get query strings
@@ -22,13 +21,15 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {}
 
-// part of pagination 
-const count = await Product.countDocuments({...keyword})
+  // part of pagination
+  const count = await Product.countDocuments({ ...keyword })
 
-  const products = await Product.find({ ...keyword }).limit(pageSize).skip(pageSize * (page - 1) )
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1))
   // find method when passed {} - empty object -> gives everything
 
-  res.json({products, page, pages: Math.ceil(count /pageSize)})
+  res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
 // @description Fetch single product
@@ -159,6 +160,16 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
+// @description get top rated products
+// @route GET /api/products/top
+// @access public
+
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3)
+
+  res.json(products)
+})
+
 export {
   getProductById,
   getProducts,
@@ -166,4 +177,5 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  getTopProducts,
 }
