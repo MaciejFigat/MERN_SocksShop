@@ -307,7 +307,23 @@ _frontend:_
 1. constants + reducer + add to store
 2. now I need to call the action to fetch those products: productActions- _listTopProducts_
 3. creating new component ProductCarousel.js
+
+## npm i react-helmet - doesn't improve SEO
+Meta component for custom page titles
+
+## preparation for deployment (when I set in .env NODE_ENV = production - npm start - for server only)
+_backend:_
+1. server.js 
+I want to have the build folder made static if server is in production
+if(process.env.NODE_ENV ==='production'){
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+}
+
+## deployment for Heroku
+1. changed in .gitignore /build -> /frontend/build
+
 ## shortcuts for VSC
+
 duplicate line 
 Shift + Alt + Up/Down
 ## 

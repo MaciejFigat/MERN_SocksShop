@@ -21,10 +21,6 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send('API is running')
-  next()
-})
 // for anything that goes into this route above (/api/products) is going to be linked with productRoutes
 app.use('/api/products', productRoutes)
 
@@ -37,11 +33,25 @@ app.use('/api/upload', uploadRoutes)
 app.get('/api/config/paypal', (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 )
-
 // this makes /uploads folder static, __dirname in Node.js will point into current directory - only available in common js not in ES Modules so I'll create a __dirname variable to mimic this in ES modules
 const __dirname = path.resolve()
 // path.join(__dirname, '/uploads') - this is taking me to uploads folder and with express.static it's being made static
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
+
+// for deployment (if in production I'm setting frontend/build into static folder)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '/frontend/build')))
+
+  // any route that is not one of the specified above will point to index.html (from current directory into following frontend/build/index.html)
+  app.get('*', (req, res) =>
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'))
+  )
+} else {
+  app.get('/', (req, res) => {
+    res.send('API is running')
+    next()
+  })
+}
 
 // this is for bad route - 404 error
 app.use(notFound)
