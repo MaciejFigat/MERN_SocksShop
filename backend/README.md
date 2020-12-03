@@ -321,6 +321,13 @@ if(process.env.NODE_ENV ==='production'){
 
 ## deployment for Heroku
 1. changed in .gitignore /build -> /frontend/build
+2. installed heroku-cli 
+3. heroku login
+4. heroku create (name of an app)
+5. in root create file named Procfile (in it I define how Heroku should run the app -> web: node backend/server.js)
+6. in package.json new script that enables heroku to build on the server "heroku-postbuild"
+"heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend" 
+_it will temporarily set NPM_CONFIG_PRODUCTION to false and run npm install and npm run build in the frontend_
 
 ## shortcuts for VSC
 
